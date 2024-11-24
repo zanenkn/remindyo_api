@@ -1,8 +1,8 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./db');
+const Birthday = require('./models/Birthday');
 
 const app = express();
 const PORT = process.env.PORT || 1337;
@@ -17,13 +17,6 @@ app.use(
 );
 
 connectDB();
-
-const BirthdaySchema = new mongoose.Schema({
-  name: String,
-  date: String,
-});
-
-const Birthday = mongoose.model('Birthday', BirthdaySchema);
 
 app.post('/api/birthdays', async (req, res) => {
   try {
