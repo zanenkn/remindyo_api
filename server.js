@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const connectDB = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 1337;
@@ -15,10 +16,7 @@ app.use(
   })
 );
 
-mongoose
-  .connect(process.env.DB_URL)
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error(err));
+connectDB();
 
 const BirthdaySchema = new mongoose.Schema({
   name: String,
