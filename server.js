@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./db');
 const Birthday = require('./models/Birthday');
@@ -9,7 +8,7 @@ const PORT = process.env.PORT || 1337;
 
 require('dotenv').config();
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
